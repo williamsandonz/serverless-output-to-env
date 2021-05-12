@@ -1,6 +1,6 @@
 {
   "name": "serverless-output-to-env",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Serverless plugin that writes stack outputs to a .env file during after:deploy hook.",
   "main": "index.js",
   "repository": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "cfn-resolver-lib": "^1.1.7",
+    "dotenv": "^9.0.2",
     "lodash": "^4.17.21"
   }
 }

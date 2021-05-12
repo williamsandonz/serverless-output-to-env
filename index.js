@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
 const os = require('os');
+const dotenv = require("dotenv");
 
 'use strict';
 
@@ -72,7 +73,7 @@ class OutputToEnv {
       const map = this.config.map;
       console.log(chalk.blueBright('outputToEnv using custom.outputToEnv.map:'));
       console.log(map);
-      const envVars = {};
+      let envVars = {};
       Object.keys(map).forEach((key, value) => {
         const outputKey = map[key];
         const output = outputs.find(output => output.key === outputKey);
@@ -83,6 +84,20 @@ class OutputToEnv {
         }
       });
       const filePath = path.resolve(this.serverless.config.servicePath, this.config.fileName);
+      if (this.config.overwrite === false) {
+        console.log(chalk.blueBright('outputToEnv detected overwrite=false, preserving existing keys in file...'));
+
+        let existingFile;
+        try { existingFile = fs.readFileSync(filePath); } catch(e) {}
+        if (existingFile) {
+          const existingVariables = dotenv.parse(Buffer.from(existingFile), { debug: true });
+          envVars = _.assign(
+            existingVariables,
+            envVars, // Takes precedence
+          );
+        }
+      }
+
       console.log(chalk.blueBright('outputToEnv attempting to write values to '+filePath));
       const getEnvDocument = (envVars) => {
         const output = _.map(envVars, (value, key) => {
