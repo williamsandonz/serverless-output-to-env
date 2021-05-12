@@ -1,0 +1,24 @@
+{
+  "name": "serverless-output-to-env",
+  "version": "1.0.0",
+  "description": "A Serverless plugin that writes stack outputs to a .env file during after:deploy hook.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamsandonz/serverless-output-to-env.git"
+  },
+  "author": "Sando IT LTD <www.sandoit.co.uk>",
+  "contributors": [
+    "William Sando <williamsandonz@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williamsandonz/serverless-output-to-env/issues"
+  },
+  "homepage": "https://github.com/williamsandonz/serverless-output-to-env#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cfn-resolver-lib": "^1.1.7",
+    "lodash": "^4.17.21"
+  }
+}
