@@ -7,7 +7,7 @@ A Serverless plugin that writes stack outputs to a .env file during after:deploy
 Add the plugin to your serverless.yml
 
     plugins:
-      -serverless-website-domain
+      -serverless-output-to-env
 
 
 Add plugin configuration to serverless.yml
@@ -35,5 +35,5 @@ serverless output-to-env
 
 | Name                | Required | Data Type | Default | Description                                                                                                                                                                       |
 |---------------------|----------|-----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| fileName |     Y    |   String  |         | Path to output file': [ CloudFrontDistribution, DomainName ]).                                            |
+| fileName |     Y    |   String  |         | Path to output file                                        |
 | map |     Y    |   Object  |         | Key/Value map for .env file key to your output key. 
